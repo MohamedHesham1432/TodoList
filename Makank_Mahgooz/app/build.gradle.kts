@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
+    id ("dagger.hilt.android.plugin")
 }
 
 android {
@@ -50,6 +53,25 @@ android {
 }
 
 dependencies {
+    val voyagerVersion = "1.1.0-beta02"
+
+    // Navigator
+    implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
+    implementation("com.google.dagger:hilt-android:2.52")
+    kapt("com.google.dagger:hilt-android-compiler:2.52")
+    kapt("androidx.hilt:hilt-compiler:1.2.0")
+    implementation("androidx.hilt:hilt-navigation-fragment:1.2.0")
+    // For Dagger Hilt to work with Jetpack Compose
+    implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
+    // Coil -- Online Image Loader
+    implementation("io.coil-kt:coil-compose:2.7.0")
+    // Retrofit & Converter
+    implementation ("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.11.0")
+    // interceptor to debug network calls
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.12.0")
+
+
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

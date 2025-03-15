@@ -17,6 +17,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.example.makank_mahgooz.presentation.ui.SiginScreen
 import com.example.makank_mahgooz.ui.theme.Makank_MahgoozTheme
 
 class MainActivity : ComponentActivity() {
@@ -25,12 +26,14 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         installSplashScreen()
         setContent {
-            Text(text = "hello", style = TextStyle(
+            SiginScreen()
+           /* Text(text = "hello", style = TextStyle(
                 color = Color.White,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
                 textAlign= TextAlign.Center
             ))
+            */
         }
     }
 }
