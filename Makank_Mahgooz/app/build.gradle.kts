@@ -54,9 +54,9 @@ android {
 
 dependencies {
     val voyagerVersion = "1.1.0-beta02"
-
     // Navigator
     implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
+    
     implementation("com.google.dagger:hilt-android:2.52")
     kapt("com.google.dagger:hilt-android-compiler:2.52")
     kapt("androidx.hilt:hilt-compiler:1.2.0")

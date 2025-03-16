@@ -94,7 +94,8 @@ class LoginScreen : Screen{
             )
             Spacer(modifier = Modifier.height(10.dp))
             Row {
-                Icon(imageVector = Icons.Filled.CheckCircle,contentDescription = null,modifier = Modifier.size(15.dp))
+                Icon(imageVector = Icons.Filled.CheckCircle,contentDescription = null,
+                    modifier = Modifier.size(15.dp))
                 Spacer(modifier = Modifier.width(10.dp))
                 Text(text = "Remember me",style = TextStyle(
                     color = Color.Black,
