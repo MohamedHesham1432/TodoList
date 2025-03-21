@@ -17,6 +17,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -78,6 +79,10 @@ class LoginScreen : Screen{
                     contentDescription = null,
                     tint = Color(0xffA7AFB6),
                     modifier = Modifier.size(20.dp)) },
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = Color(0xff004AAD),
+                    unfocusedBorderColor = Color(0xff004AAD)
+                ),
                 modifier = Modifier.width(329.dp)
                 )
             Spacer(modifier = Modifier.height(15.dp))
@@ -92,6 +97,10 @@ class LoginScreen : Screen{
                     contentDescription = null,
                     tint = Color(0xffA7AFB6),
                     modifier = Modifier.size(20.dp)) },
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = Color(0xff004AAD),
+                    unfocusedBorderColor = Color(0xff004AAD)
+                ),
                 modifier = Modifier.width(329.dp)
             )
             Spacer(modifier = Modifier.height(10.dp))

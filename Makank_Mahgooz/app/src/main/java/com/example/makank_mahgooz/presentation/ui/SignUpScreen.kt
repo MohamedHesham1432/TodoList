@@ -162,7 +162,7 @@ class SignUpScreen : Screen {
             }
             Spacer(modifier = Modifier.height(30.dp))
             // Sign Up button
-            Button(onClick = {navigator.push(HomeScreen())},colors = ButtonDefaults.buttonColors(
+            Button(onClick = {navigator.push(LoginScreen())},colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xff004AAD),
                 contentColor = Color.White
             ), shape = RoundedCornerShape(0.dp), modifier = Modifier
