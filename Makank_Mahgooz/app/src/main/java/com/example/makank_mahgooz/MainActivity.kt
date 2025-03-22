@@ -10,8 +10,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import cafe.adriel.voyager.navigator.Navigator
+import com.example.makank_mahgooz.presentation.ui.ForgetPasswordScreen
 import com.example.makank_mahgooz.presentation.ui.LoginScreen
+import com.example.makank_mahgooz.presentation.ui.ResetPasswordScreen
 import com.example.makank_mahgooz.presentation.ui.SignUpScreen
+import com.example.makank_mahgooz.presentation.ui.UpdatedPasswordScreen
 import com.example.makank_mahgooz.ui.theme.Makank_MahgoozTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,7 +23,7 @@ class MainActivity : ComponentActivity() {
         //enableEdgeToEdge()
         installSplashScreen()
         setContent {
-            Navigator(screen = SignUpScreen())
+            Navigator(screen = LoginScreen())
         }
     }
 }

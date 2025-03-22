@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -28,7 +27,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
@@ -36,43 +34,53 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.example.makank_mahgooz.R
 
-class ForgetPasswordScreen: Screen {
+class ResetPasswordScreen : Screen{
     @Composable
     override fun Content() {
-        forgetPasswordScreen()
+        resetPasswordScreen()
     }
-
     @Composable
-    fun forgetPasswordScreen(){
+    fun resetPasswordScreen(){
         val navigator= LocalNavigator.currentOrThrow
-        var email by remember { mutableStateOf("")}
+        var password by remember { mutableStateOf("") }
+        var newPassword by remember { mutableStateOf("") }
         IconButton(onClick = { navigator.pop() })
         {
             Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                 contentDescription = null ,
-                modifier = Modifier.padding(start = 10.dp, top = 16.dp)
-            )
+                modifier = Modifier.padding(start = 17.dp, top = 16.dp))
         }
         Column(modifier = Modifier.padding(start = 16.dp, top = 53.dp)) {
-            Text(text = "Forget Password",
+            Text(text = "Set a New Password",
                 style = TextStyle(
                     fontSize = 20.sp,
                     fontFamily = FontFamily(Font(R.font.poppins_semibold))
-            ))
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(text = "Please Enter Your Email To Reset The password",
-                style = TextStyle(
-                    color = Color.Black.copy(0.35f),
-                    fontSize = 14.sp,
-                    fontFamily = FontFamily(Font(R.font.poppins_semibold))
-                ))
-            Spacer(modifier = Modifier.height(34.dp))
+                )
+            )
+            Spacer(modifier = Modifier.height(39.dp))
+
+            Text(text = "Password")
+            OutlinedTextField(value =password ,
+                onValueChange = {password = it},
+                label = { Text(text = "Enter Your Password",
+                    color = Color(0xffA7AFB6) )},
+                leadingIcon = { Icon(painter = painterResource(id = R.drawable.password),
+                    contentDescription = null,
+                    tint = Color(0xffA7AFB6),
+                    modifier = Modifier.size(20.dp)) },
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = Color(0xff004AAD),
+                    unfocusedBorderColor = Color(0xff004AAD)
+                ),
+                modifier = Modifier.width(329.dp)
+            )
+            Spacer(modifier = Modifier.height(15.dp))
             //email text field
-            Text(text = "Email")
-            OutlinedTextField(value =email ,
-                onValueChange = {email = it},
-                label = { Text(text = "Enter Your Email",
-                    color =Color(0xffA7AFB6) )},
+            Text(text = "New Password")
+            OutlinedTextField(value =newPassword ,
+                onValueChange = {newPassword = it},
+                label = { Text(text = "Enter Your Password",
+                    color = Color(0xffA7AFB6) )},
                 leadingIcon = { Icon(painter = painterResource(id = R.drawable.password),
                     contentDescription = null,
                     tint = Color(0xffA7AFB6),
@@ -84,25 +92,27 @@ class ForgetPasswordScreen: Screen {
                 modifier = Modifier.width(329.dp)
             )
             Spacer(modifier = Modifier.height(34.dp))
-            // Reset password button
-            Button(onClick = {navigator.push(ResetPasswordScreen())},colors = ButtonDefaults.buttonColors(
+            Button(onClick = {
+                if (password == newPassword)
+                navigator.push(UpdatedPasswordScreen())
+            },colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xff004AAD),
                 contentColor = Color.White,
                 disabledContainerColor = Color(0xff004AAD).copy(alpha = 0.5f),
                 disabledContentColor = Color.White.copy(alpha = 0.5f)
             ), shape = RoundedCornerShape(0.dp), modifier = Modifier
-                .width(329.dp)
+                .width(330.dp)
                 .height(50.dp),
-                enabled = email.isNotEmpty())
+                enabled = password.isNotEmpty() && newPassword.isNotEmpty() && password == newPassword)
             {
                 Text(text = "Reset Password",style = TextStyle(
                     color = Color.White,
                     fontSize = 16.sp,
                     fontFamily = FontFamily(Font(R.font.poppins_bold))
-                ))
+                )
+                )
             }
 
         }
     }
-
 }

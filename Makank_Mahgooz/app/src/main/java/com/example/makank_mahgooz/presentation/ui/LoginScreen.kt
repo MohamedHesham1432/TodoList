@@ -106,7 +106,8 @@ class LoginScreen : Screen{
             Spacer(modifier = Modifier.height(10.dp))
             //remember me and forget password
             Row {
-                Checkbox(checked = isAgreed, onCheckedChange = {isAgreed=it}, colors = CheckboxDefaults.colors(
+                Checkbox(checked = isAgreed, onCheckedChange = {isAgreed=it},
+                    colors = CheckboxDefaults.colors(
                     checkedColor = Color.Black,
                     uncheckedColor = Color.Black,
                     checkmarkColor = Color.White
@@ -130,10 +131,13 @@ class LoginScreen : Screen{
             // login button
             Button(onClick = {navigator.push(HomeScreen())},colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xff004AAD),
-                contentColor = Color.White
+                contentColor = Color.White,
+                disabledContainerColor = Color(0xff004AAD).copy(alpha = 0.5f),
+                disabledContentColor = Color.White.copy(alpha = 0.5f)
             ), shape = RoundedCornerShape(0.dp), modifier = Modifier
                 .width(329.dp)
-                .height(50.dp))
+                .height(50.dp),
+               enabled =  password.isNotEmpty() && email.isNotEmpty())
             {
                 Text(text = "Login",style = TextStyle(
                     color = Color.White,

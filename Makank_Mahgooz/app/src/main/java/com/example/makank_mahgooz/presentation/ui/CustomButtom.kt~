@@ -1,0 +1,11 @@
+package com.example.makank_mahgooz.presentation.ui
+
+import androidx.compose.runtime.Composable
+
+class CustomButtom {
+
+    @Composable
+    fun customButtom() {
+        
+    }
+}

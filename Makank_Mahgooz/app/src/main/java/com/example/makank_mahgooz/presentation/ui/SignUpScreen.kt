@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -13,7 +12,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
@@ -55,7 +53,7 @@ class SignUpScreen : Screen {
         val navigator= LocalNavigator.currentOrThrow
         var email by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
-        var confirm_password by remember { mutableStateOf("") }
+        var confirmpassword by remember { mutableStateOf("") }
         var isAgreed by remember { mutableStateOf(false) }
         Column(modifier = Modifier.padding(start = 16.dp, top = 75.dp)) {
             Row (verticalAlignment = Alignment.CenterVertically,
@@ -115,8 +113,8 @@ class SignUpScreen : Screen {
 
             //confirm password text field
             Text(text = "Confirm password")
-            OutlinedTextField(value =confirm_password ,
-                onValueChange = {confirm_password = it},
+            OutlinedTextField(value =confirmpassword ,
+                onValueChange = {confirmpassword = it},
                 label = { Text(text = "Re-Enter Your Password",
                     color = Color(0xffA7AFB6)
                 )
@@ -164,10 +162,13 @@ class SignUpScreen : Screen {
             // Sign Up button
             Button(onClick = {navigator.push(LoginScreen())},colors = ButtonDefaults.buttonColors(
                 containerColor = Color(0xff004AAD),
-                contentColor = Color.White
+                contentColor = Color.White,
+                disabledContainerColor = Color(0xff004AAD).copy(alpha = 0.5f),
+                disabledContentColor = Color.White.copy(alpha = 0.5f)
             ), shape = RoundedCornerShape(0.dp), modifier = Modifier
                 .width(329.dp)
-                .height(50.dp))
+                .height(50.dp),
+               enabled =  password.isNotEmpty() && email.isNotEmpty()&& confirmpassword.isNotEmpty())
             {
                 Text(text = "Sign Up",style = TextStyle(
                     color = Color.White,
