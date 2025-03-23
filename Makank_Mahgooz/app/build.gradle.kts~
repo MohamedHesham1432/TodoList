@@ -53,9 +53,7 @@ android {
 }
 
 dependencies {
-    //mapbox
     implementation("com.mapbox.maps:android:11.10.3")
-    implementation("com.mapbox.extension:maps-compose:11.10.3")
     val voyagerVersion = "1.1.0-beta02"
     // Navigator
     implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")

@@ -11,6 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import cafe.adriel.voyager.navigator.Navigator
 import com.example.makank_mahgooz.presentation.ui.ForgetPasswordScreen
+import com.example.makank_mahgooz.presentation.ui.HomeScreen
 import com.example.makank_mahgooz.presentation.ui.LoginScreen
 import com.example.makank_mahgooz.presentation.ui.ResetPasswordScreen
 import com.example.makank_mahgooz.presentation.ui.SignUpScreen
@@ -23,7 +24,7 @@ class MainActivity : ComponentActivity() {
         //enableEdgeToEdge()
         installSplashScreen()
         setContent {
-            Navigator(screen = LoginScreen())
+            Navigator(screen = HomeScreen())
         }
     }
 }
